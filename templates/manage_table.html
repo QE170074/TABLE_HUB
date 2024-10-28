@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Manage Tables</h2>
+
+{% for venue in venues %}
+    <h3>{{ venue.name }} - {{ venue.location }}</h3>
+    <ul class="table-list">
+        {% for table in venue.tables %}
+        <li class="table-item">Bàn số {{ table.number }} - Trạng thái: {{ 'Còn trống' if table.is_available else 'Đã đặt' }}
+            <a href="{{ url_for('edit_table', table_id=table.id) }}">Edit</a>
+            <div class="table-icon">
+                <img src="static/icon.png" alt="Table Icon" width="50" height="50">
+            </div>
+        </li>
+        {% else %}
+        <li>No tables available for this venue</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_table', venue_id=venue.id) }}" class="add-table-link">Add Table</a>
+{% endfor %}
+{% endblock %}

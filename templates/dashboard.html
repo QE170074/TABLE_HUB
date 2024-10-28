@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<p>Welcome, {{ current_user.username }}!</p>
+
+<ul>
+    <li><a href="{{ url_for('manage_tables') }}">Manage Tables</a></li>
+    <li><a href="{{ url_for('manage_menu', venue_id=1) }}">Manage Menu</a></li>
+</ul>
+{% endblock %}

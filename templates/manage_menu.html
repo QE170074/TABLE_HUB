@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Manage Menu</h2>
+
+{% for venue in venues %}
+    <h3>{{ venue.name }} - {{ venue.location }}</h3>
+    <ul>
+        {% for item in venue.menu_items %}
+        <li>{{ item.name }} - Giá: {{ item.price }}
+            <a href="{{ url_for('edit_menu_item', item_id=item.id) }}">Edit</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_menu_item', venue_id=venue.id) }}">Add Menu Item</a>
+{% endfor %}
+{% endblock %}

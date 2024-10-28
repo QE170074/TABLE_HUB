@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Pay - Thanh toán qua ngân hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .qr-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .qr-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .qr-container .bank-info {
+            margin-top: 15px;
+        }
+
+        .qr-container .bank-info h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .qr-container .bank-info p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quét mã để chuyển tiền qua ngân hàng</h1>
+    <p>Chuyển tiền đến:</p>
+
+    <div class="qr-container">
+        <img src="{{ qr_code_url }}" alt="QR Code" />
+        <div class="bank-info">
+            <h2>Nguyen Van Hung</h2>
+            <p>Số tài khoản: 1903 5651 3700 18</p>
+            <p>Ngân hàng: Techcombank</p>
+        </div>
+    </div>
+
+    <p>Vui lòng quét mã bằng ứng dụng ngân hàng của bạn để thanh toán.</p>
+
+    <h2>Đơn hàng của bạn</h2>
+    <ul>
+        {% for item in ordered_items %}
+        <li>{{ item.name }} - {{ item.price }} VND</li>
+        {% endfor %}
+    </ul>
+    <p>Tổng tiền: {{ total_price }} VND</p>
+</body>
+</html>

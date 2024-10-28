@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit Table {{ table.number }}</h2>
+
+<form method="POST">
+    <label for="status">Trạng thái:</label>
+    <select id="status" name="status">
+        <option value="available" {% if table.is_available %}selected{% endif %}>Còn trống</option>
+        <option value="unavailable" {% if not table.is_available %}selected{% endif %}>Đã đặt</option>
+    </select>
+
+    <button type="submit">Lưu thay đổi</button>
+</form>
+{% endblock %}

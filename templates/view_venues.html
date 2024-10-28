@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Venues</h2>
+
+<ul>
+    {% for venue in venues %}
+    <li>
+        {{ venue.name }} - {{ venue.location }}
+        <a href="{{ url_for('view_menu', venue_id=venue.id) }}">View Menu</a>
+        <a href="{{ url_for('view_tables', venue_id=venue.id) }}">View Tables</a> <!-- Link dẫn tới danh sách bàn -->
+    </li>
+    {% else %}
+    <li>No venues available.</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('home') }}">Back to Home</a>
+{% endblock %}

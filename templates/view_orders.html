@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Orders for Your Venues</h2>
+
+{% for order in orders %}
+    <h3>Order ID: {{ order.id }}</h3>
+    <p>Customer ID: {{ order.customer_id }}</p>
+    <p>Total Price: {{ order.total_price }} VND</p>
+    <p>Status: {{ order.status }}</p>
+    <h4>Items:</h4>
+    <ul>
+        {% for item in order.order_items %}
+        <li>{{ item.menu_item.name }} - Quantity: {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No orders available for your venues.</p>
+{% endfor %}
+
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

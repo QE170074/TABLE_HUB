@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Menu for {{ venue.name }}</h2>
+
+<ul>
+    {% for item in menu_items %}
+    <li>
+        {{ item.name }} - {{ item.price }} VND
+        <form action="{{ url_for('order_item', item_id=item.id) }}" method="POST">
+            <button type="submit">Order This Item</button>
+        </form>
+    </li>
+    {% else %}
+    <li>No menu items available for this venue.</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('view_cart') }}">View Cart</a>
+<a href="{{ url_for('view_venues') }}">Back to Venues</a>
+{% endblock %}

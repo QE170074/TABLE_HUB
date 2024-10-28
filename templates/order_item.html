@@ -1,0 +1,10 @@
+<ul>
+    {% for item in menu_items %}
+    <li>
+        {{ item.name }} - {{ item.price }} VND
+        <a href="{{ url_for('order_item', item_id=item.id) }}">Order This Item</a>
+    </li>
+    {% else %}
+    <li>No menu items available for this venue.</li>
+    {% endfor %}
+</ul>

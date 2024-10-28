@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Tables at {{ venue.name }}</h2>
+
+<ul>
+    {% for table in venue.tables %}
+    <li>
+        Table Number: {{ table.number }} - 
+        {% if table.is_available %}
+        <span class="badge-success">Available</span>
+        <form action="{{ url_for('book_table', table_id=table.id) }}" method="POST" style="display: inline;">
+            <button type="submit">Book This Table</button>
+        </form>
+        {% else %}
+        <span class="badge-danger">Booked</span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('view_venues') }}">Back to Venues</a>
+{% endblock %}
