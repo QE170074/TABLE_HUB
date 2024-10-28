@@ -5,3 +5,4 @@ flask_login
 flask_bcrypt
 flask_migrate
 pymysql
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://vanhung:12345@localhost/table_hub'
